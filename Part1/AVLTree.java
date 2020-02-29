@@ -123,4 +123,32 @@ class AVLTree {
 
     }
 
+    //Print tree functions begin here -
+    //PREORDER
+    public void preOrder(AVLNode root) {
+        if(root != null){
+            System.out.print(root.Key + " ");
+            preOrder(root.leftPtr);
+            preOrder(root.rightPtr);
+        }
+    }
+
+    //POSTORDER
+    public void postOrder(AVLNode root) {
+        if(root != null){
+            postOrder(root.leftPtr);
+            postOrder(root.rightPtr);
+            System.out.print(root.Key + " ");
+        }
+    }
+
+    //INORDER
+    public void inOrder(AVLNode root) {
+        if(root != null){
+            inOrder(root.leftPtr);
+            System.out.print(root.Key + " ");
+            inOrder(root.rightPtr);            
+        }
+    }
+
 }
