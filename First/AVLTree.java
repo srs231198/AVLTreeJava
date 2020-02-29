@@ -1,5 +1,4 @@
 import java.io.*;
-import java.security.Key;
 
 class AVLTree {
 
@@ -10,7 +9,7 @@ class AVLTree {
 
         //if node is null then return -1
         if(node == null){
-            return -1;
+            return 0;
         }
         //otherwise return the height
         return node.height;
@@ -21,7 +20,7 @@ class AVLTree {
 
         //if node is null return -1
         if(node == null){
-            return -1;
+            return 0;
         }
         //Otherwise return the height of left subtree minus the height 
         //of the right subtree
@@ -80,11 +79,11 @@ class AVLTree {
             return (new AVLNode(Key));
         }
         //if the node is bigger than the key
-        if(Key.compareTo(node.Key) < 1) {
+        if(Key.compareTo(node.Key) < 0) {
             node.leftPtr = insert(node.leftPtr, Key);
         }
         //if the node is less than the key
-        else if(Key.compareTo(node.Key) > 1) {
+        else if(Key.compareTo(node.Key) > 0) {
             node.rightPtr = insert(node.rightPtr, Key);
         }
         //if the node is a duplicate we throw it out
