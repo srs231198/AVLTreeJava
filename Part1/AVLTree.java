@@ -41,16 +41,34 @@ class AVLTree {
 
         //Swap the nodes and rotate the tree right
         grandParent.leftPtr = child;
-        Parent.rightPtr = grandParent;
+        Parent.rightPtr     = grandParent;
 
         //Update the tree heights
         grandParent.height = max(getHeight(grandParent.leftPtr), getHeight(grandParent.rightPtr)) + 1;
-        Parent.height = max(getHeight(Parent.leftPtr), getHeight(Parent.rightPtr)) + 1;
+        Parent.height      = max(getHeight(Parent.leftPtr), getHeight(Parent.rightPtr)) + 1;
 
         //return the new root
         return Parent;
     }
 
+    //function to rotate the tree left
+    public AVLNode leftRotate(AVLNode grandParent) {
+
+        //Set the Parent and child nodes
+        AVLNode Parent = grandParent.rightPtr;
+        AVLNode child  = Parent.leftPtr;
+
+        //Swap the nodes and rotate left
+        grandParent.rightPtr = child;
+        Parent.leftPtr       = grandParent;
+
+        //Update the tree heights
+        grandParent.height = max(getHeight(grandParent.leftPtr), getHeight(grandParent.rightPtr)) + 1;
+        Parent.height      = max(getHeight(Parent.leftPtr), getHeight(Parent.rightPtr)) + 1;
+
+        //return the new root
+        return Parent;
+    }
 
 
 
