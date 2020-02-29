@@ -7,11 +7,9 @@ class AVLNode {
     public AVLNode leftPtr = null;
     public AVLNode rightPtr = null;
 
-    public void setLeft(AVLNode node) {
-        leftPtr = node;
-    }
-
-    public void setRight(AVLNode node) {
-        rightPtr = node;
+    //Constructor
+    AVLNode(String key) {
+        Key = key;
+        height = 1;
     }
 }

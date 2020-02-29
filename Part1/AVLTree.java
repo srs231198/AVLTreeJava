@@ -70,6 +70,34 @@ class AVLTree {
         return Parent;
     }
 
+    //function to insert a node and balance the avl tree
+    public AVLNode insert(AVLNode node, String Key) {
 
+        //Perform normal insertion
+        //base case when we reach a null
+        if(node == null) {
+            return (new AVLNode(Key));
+        }
+        //if the node is bigger than the key
+        if(Key.compareTo(node.Key) < 1) {
+            node.leftPtr = insert(node.leftPtr, Key);
+        }
+        //if the node is less than the key
+        else if(Key.compareTo(node.Key) > 1) {
+            node.rightPtr = insert(node.rightPtr, Key);
+        }
+        //if the node is a duplicate we throw it out
+        else {
+            return node;
+        }
+
+        //update the height of the node
+        node.height = 1 + max(getHeight(node.leftPtr), getHeight(node.rightPtr));
+
+        //check whether the node is balanced or not
+        int balance = getBalance(node);
+
+        //Cases to be handled
+    }
 
 }
