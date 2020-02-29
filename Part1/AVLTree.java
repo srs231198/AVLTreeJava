@@ -1,4 +1,5 @@
 import java.io.*;
+import java.security.Key;
 
 class AVLTree {
 
@@ -98,6 +99,28 @@ class AVLTree {
         int balance = getBalance(node);
 
         //Cases to be handled
+        //left left case
+        if(balance > 1 && Key.compareTo(node.leftPtr.Key) < 1) {
+            return rightRotate(node);
+        }
+        //left right case
+        if(balance > 1 && Key.compareTo(node.leftPtr.Key) > 1) {
+            node.leftPtr = leftRotate(node.leftPtr);
+            return rightRotate(node);
+        }
+        //right right case
+        if(balance < -1 && Key.compareTo(node.rightPtr.Key) > 1) {
+            return leftRotate(node);
+        }
+        //right left case
+        if(balance < -1 && Key.compareTo(node.rightPtr.Key) < 1) {
+            node.rightPtr = rightRotate(node.rightPtr);
+            return leftRotate(node);
+        }
+
+        //return the node if the tree is already balanced
+        return node;
+
     }
 
 }
