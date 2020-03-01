@@ -8,8 +8,9 @@ class AVLNode {
     public AVLNode rightPtr = null;
 
     //Constructor
-    AVLNode(String key) {
-        Key = key;
-        height = 1;
+    AVLNode(String key, Book val) {
+        this.Key = key;
+        this.val = val;
+        this.height = 1;
     }
 }

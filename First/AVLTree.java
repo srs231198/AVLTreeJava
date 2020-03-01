@@ -71,20 +71,20 @@ class AVLTree {
     }
 
     //function to insert a node and balance the avl tree
-    public AVLNode insert(AVLNode node, String Key) {
+    public AVLNode insert(AVLNode node, String Key, Book val) {
 
         //Perform normal insertion
         //base case when we reach a null
         if(node == null) {
-            return (new AVLNode(Key));
+            return (new AVLNode(Key, val));
         }
         //if the node is bigger than the key
         if(Key.compareTo(node.Key) < 0) {
-            node.leftPtr = insert(node.leftPtr, Key);
+            node.leftPtr = insert(node.leftPtr, Key, val);
         }
         //if the node is less than the key
         else if(Key.compareTo(node.Key) > 0) {
-            node.rightPtr = insert(node.rightPtr, Key);
+            node.rightPtr = insert(node.rightPtr, Key, val);
         }
         //if the node is a duplicate we throw it out
         else {

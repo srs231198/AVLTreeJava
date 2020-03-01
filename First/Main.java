@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 class Main {
@@ -6,35 +7,28 @@ class Main {
     public static void main(String[] args) throws IOException {
         AVLTree tree = new AVLTree();
 
-        fileReader();
-        //Scanner sc = new Scanner(System.in); 
-        //String filename = sc.nextLine(); 
-        //System.out.print("Enter filename: " + filename);
-        
-        
-
-        //tree.root = tree.insert(tree.root, "12345");
-        //tree.root = tree.insert(tree.root, "12344");
-        //tree.root = tree.insert(tree.root, "12346");
-
-        //tree.preOrder(tree.root);
+        fileReader(tree);
+        tree.preOrder(tree.root);
 
     }
 
     
-    public static void fileReader() throws IOException {
-        
-    int arr[];  
+    public static void fileReader(AVLTree tree) throws IOException {
+         
     BufferedReader reader;
-	    try {
-		    reader = new BufferedReader(new FileReader("test.txt"));
-			String line = reader.readLine();
-			while (line != null) {
-                for()
-				arr[i] = line;
-				// read next line
-				line = reader.readLine();
-			}
-			reader.close();
+    reader = new BufferedReader(new FileReader("test.txt"));
+    String line = reader.readLine();
+    String[] sp = new String[2];
+
+    while (line != null) {
+        sp = line.split(" ");
+        Book bk = new Book(sp[1], sp[2]);
+        tree.root = tree.insert(tree.root, sp[0], bk);
+        // read next line
+        line = reader.readLine();
+    }
+
+    reader.close();
+    }
 
 }
