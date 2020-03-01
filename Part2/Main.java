@@ -51,6 +51,22 @@ class Main {
         preorder(temp.right); 
     } 
 
+    static boolean checkBST(Node root, Integer low, Integer high){
+        if(root == null){
+            return true;
+        }
+        
+        int val = root.key;
+        
+        if(low != null && val <= low )
+            return false;
+        if(high != null && val >= high){
+            return false;
+        }
+        
+        return checkBST(root.left, low, val) && checkBST(root.right, val, high);
+    }
+
     public static void main(String[] args) {
         Random rn = new Random();
         List<Integer> list = new ArrayList<>();
