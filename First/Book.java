@@ -9,4 +9,8 @@ class Book {
         this.title = title;
         this.lastName = lastName;
     }
+
+    void print() {
+        System.out.print(this.title + " " + this.lastName + " ");
+    }
 }

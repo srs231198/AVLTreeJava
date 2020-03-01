@@ -12,7 +12,6 @@ class Main {
 
     }
 
-    
     public static void fileReader(AVLTree tree) throws IOException {
          
     BufferedReader reader;

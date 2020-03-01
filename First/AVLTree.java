@@ -127,6 +127,7 @@ class AVLTree {
     public void preOrder(AVLNode root) {
         if(root != null){
             System.out.print(root.Key + " ");
+            root.val.print();
             preOrder(root.leftPtr);
             preOrder(root.rightPtr);
         }
