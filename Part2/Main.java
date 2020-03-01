@@ -6,8 +6,7 @@ class Main {
     static class Node { 
         int key; 
         Node left, right; 
-          
-        // constructor 
+
         Node(int key){ 
             this.key = key; 
             left = null; 
@@ -95,14 +94,28 @@ class Main {
 
     public static void main(String[] args) {
         Random rn = new Random();
+        
         List<Integer> list = new ArrayList<>();
 
-        for(int i = 0; i < 32; i++) {
-           int rand = rn.nextInt(100);
-           list.add(rand); 
+        for (int i = 0; i < 1000; i++) {
+            rn.setSeed(100);
+            for(int j = 0; j < 10; j++) {
+                int rand = rn.nextInt(10);
+                list.add(rand); 
+             }
+     
+             Node root = new Node(rn.nextInt(10));
+             for (Integer k : list) {
+                 insert(root, k);
+             }
+     
+             if(checkBST(root, null, null)){
+                preorder(root);
+                System.out.println("\'Tis a Binary tree");
+             }
+
+             list.clear();
         }
-
-
 
     }
 
