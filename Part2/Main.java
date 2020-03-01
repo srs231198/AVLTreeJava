@@ -67,6 +67,32 @@ class Main {
         return checkBST(root.left, low, val) && checkBST(root.right, val, high);
     }
 
+    int height(Node node) 
+    {
+        if (node == null) 
+            return 0; 
+
+        return 1 + Math.max(height(node.left), height(node.right)); 
+    }
+
+    boolean isBalanced(Node node) 
+    { 
+        int lh, rh; 
+        
+        if (node == null) 
+            return true; 
+  
+        lh = height(node.left); 
+        rh = height(node.right); 
+  
+        if (Math.abs(lh - rh) <= 1
+            && isBalanced(node.left) 
+            && isBalanced(node.right)) 
+            return true; 
+  
+        return false; 
+    }
+
     public static void main(String[] args) {
         Random rn = new Random();
         List<Integer> list = new ArrayList<>();
