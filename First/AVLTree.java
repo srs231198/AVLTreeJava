@@ -28,8 +28,8 @@ class AVLTree {
     }
 
     //helper function to get the max of passed values
-    public int max(int a, int b) {
-        return (a > b) ? a : b;
+    public int max(int num1, int num2) {
+        return (num1 > num2) ? num1 : num2;
     }
 
     //function to rotate the tree right
@@ -86,7 +86,7 @@ class AVLTree {
         else if(Key.compareTo(node.Key) > 0) {
             node.rightPtr = insert(node.rightPtr, Key, val);
         }
-        //if the node is a duplicate we throw it out
+        //return duplicate node(s)
         else {
             return node;
         }
