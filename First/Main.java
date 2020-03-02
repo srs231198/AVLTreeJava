@@ -21,7 +21,7 @@ class Main {
     while (line != null) {
         sp = line.split(" ");
         Book bk = new Book(sp[1], sp[2]);
-        tree.root = tree.insert(tree.root, sp[0], bk);
+        tree.root = tree.insert(tree.root, sp[0], bk, tree);
         // read next line
         line = reader.readLine();
     }

@@ -33,7 +33,7 @@ class AVLTree {
     }
 
     //function to rotate the tree right
-    public AVLNode rightRotate(AVLNode grandParent) {
+    public AVLNode rightRotate(AVLNode grandParent, AVLTree tree) {
 
         //Set the Parent and child nodes
         AVLNode Parent = grandParent.leftPtr;
@@ -47,12 +47,13 @@ class AVLTree {
         grandParent.height = max(getHeight(grandParent.leftPtr), getHeight(grandParent.rightPtr)) + 1;
         Parent.height      = max(getHeight(Parent.leftPtr), getHeight(Parent.rightPtr)) + 1;
 
+
         //return the new root
         return Parent;
     }
 
     //function to rotate the tree left
-    public AVLNode leftRotate(AVLNode grandParent) {
+    public AVLNode leftRotate(AVLNode grandParent, AVLTree tree) {
 
         //Set the Parent and child nodes
         AVLNode Parent = grandParent.rightPtr;
@@ -71,7 +72,7 @@ class AVLTree {
     }
 
     //function to insert a node and balance the avl tree
-    public AVLNode insert(AVLNode node, String Key, Book val) {
+    public AVLNode insert(AVLNode node, String Key, Book val, AVLTree tree) {
 
         //Perform normal insertion
         //base case when we reach a null
@@ -80,11 +81,11 @@ class AVLTree {
         }
         //if the node is bigger than the key
         if(Key.compareTo(node.Key) < 0) {
-            node.leftPtr = insert(node.leftPtr, Key, val);
+            node.leftPtr = insert(node.leftPtr, Key, val, tree);
         }
         //if the node is less than the key
         else if(Key.compareTo(node.Key) > 0) {
-            node.rightPtr = insert(node.rightPtr, Key, val);
+            node.rightPtr = insert(node.rightPtr, Key, val, tree);
         }
         //return duplicate node(s)
         else {
@@ -100,25 +101,25 @@ class AVLTree {
         //Cases to be handled
         //left left case
         if(balance > 1 && Key.compareTo(node.leftPtr.Key) < 1) {
-            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with right rotation");
-            return rightRotate(node);
+            System.out.println("Imbalance occurred at inserting ISBN " + node.Key + "; fixed in Right rotation");
+            return rightRotate(node, tree);
         }
         //left right case
         if(balance > 1 && Key.compareTo(node.leftPtr.Key) > 1) {
-            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with left-right rotation");
-            node.leftPtr = leftRotate(node.leftPtr);
-            return rightRotate(node);
+            System.out.println("Imbalance occurred at inserting ISBN " + node.Key + "; fixed in LeftRight rotation");
+            node.leftPtr = leftRotate(node.leftPtr, tree);
+            return rightRotate(node, tree);
         }
         //right right case
         if(balance < -1 && Key.compareTo(node.rightPtr.Key) > 1) {
-            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with left rotation");
-            return leftRotate(node);
+            System.out.println("Imbalance occurred at inserting ISBN " + node.Key + "; fixed in Left rotation");
+            return leftRotate(node, tree);
         }
         //right left case
         if(balance < -1 && Key.compareTo(node.rightPtr.Key) < 1) {
-            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with right-left rotation");
-            node.rightPtr = rightRotate(node.rightPtr);
-            return leftRotate(node);
+            System.out.println("Imbalance occurred at inserting ISBN " + node.Key + "; fixed in RightLeft rotation");
+            node.rightPtr = rightRotate(node.rightPtr, tree);
+            return leftRotate(node, tree);
         }
 
         //return the node if the tree is already balanced
@@ -131,7 +132,6 @@ class AVLTree {
     public void preOrder(AVLNode root) {
         if(root != null){
             System.out.print(root.Key + " ");
-            root.val.print();
             preOrder(root.leftPtr);
             preOrder(root.rightPtr);
         }

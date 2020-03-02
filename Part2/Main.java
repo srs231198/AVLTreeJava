@@ -102,8 +102,10 @@ class Main {
      
              if(checkBST(root, null, null)){
                 if(isBalanced(root)){
+                    System.out.print("AVL tree found ||");
+                    System.out.print(" Preorder traveral of AVL tree: ");
                     preorder(root);
-                    System.out.println("It's a AVL tree");
+                    System.out.println();
                 }
             }
 
