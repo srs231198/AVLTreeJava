@@ -8,7 +8,6 @@ class Main {
         AVLTree tree = new AVLTree();
 
         fileReader(tree);
-        tree.preOrder(tree.root);
 
     }
 

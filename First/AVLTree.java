@@ -100,19 +100,23 @@ class AVLTree {
         //Cases to be handled
         //left left case
         if(balance > 1 && Key.compareTo(node.leftPtr.Key) < 1) {
+            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with right rotation");
             return rightRotate(node);
         }
         //left right case
         if(balance > 1 && Key.compareTo(node.leftPtr.Key) > 1) {
+            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with left-right rotation");
             node.leftPtr = leftRotate(node.leftPtr);
             return rightRotate(node);
         }
         //right right case
         if(balance < -1 && Key.compareTo(node.rightPtr.Key) > 1) {
+            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with left rotation");
             return leftRotate(node);
         }
         //right left case
         if(balance < -1 && Key.compareTo(node.rightPtr.Key) < 1) {
+            System.out.println("Imbalance detected at ISBN " + node.Key + "; fixed with right-left rotation");
             node.rightPtr = rightRotate(node.rightPtr);
             return leftRotate(node);
         }
